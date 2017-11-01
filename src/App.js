@@ -1,45 +1,51 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {
-    Button,
-    Menu,
-    MenuItem,
-    MenuDivider,
-    Popover,
-    Position
-} from "@blueprintjs/core";
+import React, { Component } from 'react'
+import logo from './logo.svg'
+import './App.css'
 import Navbar from './Navbar'
 
+const theatersUrl = 'https://next.json-generator.com/api/json/get/4yKd2-QAX'
+
 class App extends Component {
+
+  state = {
+    plays: null
+  }
+
+  componentDidMount() {
+    this.fetchTheaters()
+  }
+
+  async fetchTheaters() {
+    const plays = await fetch(theatersUrl).then(r=>r.json())
+    this.setState({ plays })
+  }
+
   render() {
-    const menu = (
-      <Menu>
-        <MenuItem text="New" />
-        <MenuItem text="Open" />
-        <MenuItem text="Save" />
-        <MenuDivider />
-        <MenuItem text="Settings..." />
-      </Menu>
-    );
+
+    const { plays } = this.state
+    if (!plays)
+      return (
+        <h1>Loading...</h1>
+      )
+
+      const theatersList =
+        <ul>
+          {
+            plays.map( play => (
+              <li>
+                {play.name}
+              </li>
+            ))
+          }
+        </ul>
+
     return (
       <div className="App">
         <Navbar />
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header> */}
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-          
-          <Popover content={menu} position={Position.BOTTOM_RIGHT}>
-              <Button text="Actions" />
-          </Popover>
-          
-        </p>
+        { theatersList }
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
