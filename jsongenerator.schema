@@ -1,0 +1,25 @@
+[
+  {
+    'repeat(70)': {
+      id: '{{objectId()}}',
+      name: '{{lorem(2, "words")}}',
+      description: '{{lorem(1, "paragraphs")}}',
+      theater: '{{company()}} theater',
+      director: '{{firstName()}} {{surname()}}',
+      schedule: [{'repeat(5)':'{{moment(this.date(new Date(2014, 0, 1), new Date())).format("LLLL")}}'}],
+      rating: {
+        5:'{{integer(200)}}',
+        4:'{{integer(200)}}',
+        3:'{{integer(200)}}',
+        2:'{{integer(200)}}',
+        1:'{{integer(200)}}'
+      },
+      actors: [{'repeat(7)':'{{firstName()}} {{surname()}}'}],
+      reviews: [{'repeat(5)':{
+		name: '{{firstName()}} {{surname()}}',
+        review: '{{lorem(1, "paragraphs")}}'
+      }}],
+      watched: '{{bool()}}'
+    }
+  }
+]
