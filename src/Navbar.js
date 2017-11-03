@@ -8,10 +8,10 @@ import {connect} from 'react-redux'
 const Navbar = ({ push }) => {
 
   const ScheduleMenu = (<Menu >
-    <MenuItem onClick={() => push('/about')} text='Day'/>
-    <MenuItem onClick={() => push('/')} text='Week'/>
-    <MenuItem onClick={() => push('/about')} text='Month'/>
-    <MenuItem onClick={() => push('/')} text='Two Months'/>
+    <MenuItem onClick={() => push('/schedule/day')} text='Day'/>
+    <MenuItem onClick={() => push('/schedule/week')} text='Week'/>
+    <MenuItem onClick={() => push('/schedule/month')} text='Month'/>
+    <MenuItem onClick={() => push('/schedule/twomonths')} text='Two Months'/>
   </Menu>)
   
   const SchedulePopover = () => (<Popover content={ScheduleMenu} position={Position.BOTTOM}>
@@ -19,7 +19,7 @@ const Navbar = ({ push }) => {
   </Popover>)
 
   const ProfileMenu = (<Menu >
-    <MenuItem iconName='pt-icon-log-out' onClick={() => push('/about')} text='Logout'/>
+    <MenuItem iconName='pt-icon-log-out' onClick={() => push('/')} text='Logout'/>
   </Menu>)
 
   const ProfilePopover = () => (<Popover content={ProfileMenu} position={Position.BOTTOM}>
@@ -34,7 +34,7 @@ const Navbar = ({ push }) => {
       <span className='pt-navbar-divider'></span>
       <button className='pt-button pt-minimal pt-icon-tick-circle' onClick={() => push('/')} >All</button>
       <SchedulePopover/>
-      <button className='pt-button pt-minimal pt-icon-bookmark' onClick={() => push('/about')} >Saved</button>
+      <button className='pt-button pt-minimal pt-icon-bookmark' onClick={() => push('/saved')} >Saved</button>
 
     </div>
     <div className='pt-navbar-group pt-align-right'>
@@ -45,7 +45,7 @@ const Navbar = ({ push }) => {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  push: (to) => push(to)
+  push
 }, dispatch)
 
 export default connect(null, mapDispatchToProps)(Navbar)
