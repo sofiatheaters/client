@@ -1,0 +1,7 @@
+.loader-wrapper {
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #E1E8ED, #EBF1F5);
+}

@@ -7,9 +7,11 @@ const calculateOneToFiveRating = rating => {
   return points / maximum * 5
 }
 
+const imageUrl = 'http://theatre.art.bg/img/photos/INDEX15094552441plakat%20pileto.jpeg'
+
 export default ({ play }) => (
   // <img className='play' src='http://via.placeholder.com/500x300/bada55' />
-  <div className='play' style={{'background-image': `url(http://via.placeholder.com/500x200/bada55)`}}>
+  <div className='play' style={{'backgroundImage': `url(${imageUrl})`}}>
     <h1>{play.name}</h1>
     <span>{calculateOneToFiveRating(play.rating)}</span>
     <span>{play.theater}</span>

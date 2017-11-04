@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchAllPlays } from './actions'
 import PlaysList from './plays/PlaysList'
+import { getFilteredPlays } from './selectors'
+import Loader from './Loader'
 
 class Main extends Component {
   componentDidMount () {
@@ -13,9 +15,13 @@ class Main extends Component {
     action && action()
   }
   render () {
+    const { fetching } = this.props
     return (
       <div>
-        <PlaysList plays={this.props.plays} />
+        { fetching
+          ? <Loader />
+          : <PlaysList plays={this.props.plays} />
+         }
       </div>
     )
   }
@@ -23,7 +29,8 @@ class Main extends Component {
 
 const mapStateToProps = state => ({
   pathname: state.routing.location.pathname,
-  plays: state.plays
+  plays: getFilteredPlays(state.plays, state.filter, state.watched),
+  fetching: state.fetching
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
