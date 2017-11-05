@@ -15,7 +15,7 @@ class Filter extends Component {
 
   render () {
     return (
-      <input className='pt-input' placeholder='Search plays...' type='text' onChange={this.onChange} />
+      <input id="filter-input" className='pt-input' placeholder='Search plays...' type='text' onChange={this.onChange} />
     )
   }
 }

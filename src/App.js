@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom'
 import Navbar from './Navbar'
 import Main from './Main'
+import AppHotkeys from './AppHotkeys'
 
 const App = () => (
   <div>
@@ -14,6 +15,7 @@ const App = () => (
       <Route exact path="/schedule/twomonths" component={Main} />
       <Route exact path="/saved" component={Main} />
     </main>
+    <AppHotkeys />
   </div>
 )
 

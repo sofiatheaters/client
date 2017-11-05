@@ -12,7 +12,11 @@ class Watched extends Component {
 
   render () {
     return (
-      <Switch defaultChecked={this.props.watched} label="Watched" onChange={this.onChange.bind(this)} />
+      <Switch
+        style={{marginBottom: 0}}
+        defaultChecked={this.props.watched}
+        label="Watched"
+        onChange={this.onChange.bind(this)} />
     )
   }
 }
